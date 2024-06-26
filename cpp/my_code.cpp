@@ -6,6 +6,7 @@ extern "C"
   void hello()
   {
     std::string name = "World";
-    std::cout << "Hello, " << name << " from C++!" << std::endl;
+    // std::cout << "Hello, " << name << " from C++!" << std::endl;
+    printf("Hello from C++ \n");
   }
 }

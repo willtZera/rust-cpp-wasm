@@ -2,10 +2,9 @@ extern "C" {
   fn hello();
 }
 
-fn main() {}
-
 #[no_mangle]
 fn test() {
+  println!("Hello from Rust");
   unsafe {
     hello();
   }
