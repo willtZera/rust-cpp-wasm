@@ -11,6 +11,7 @@ A rust project with C++ code compatible with wasm
 export WASI_SDK_PATH=/path/to/wasi-sdk
 export PATH=$WASI_SDK_PATH/bin:$PATH
 ```
+3. You may also need to install `rustup`
 
 ## Build
 
