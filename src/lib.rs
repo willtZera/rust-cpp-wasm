@@ -4,7 +4,7 @@ extern "C" {
 
 #[no_mangle]
 fn test() {
-  println!("Hello from Rust");
+  println!("[test] Hello from Rust");
   unsafe {
     hello();
   }

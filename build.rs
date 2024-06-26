@@ -1,6 +1,3 @@
-// // export WASI_SDK_PATH=~/Downloads/wasi-sdk-22.0
-// // export WASI_SYSROOT=$WASI_SDK_PATH/share/wasi-sysroot
-
 // The wasi-sdk does not include libstdc++ or libc++ by default. 
 // Instead, it provides the necessary environment for compiling C/C++ code to WebAssembly. 
 // We need to ensure that we are correctly configuring the build to use the C++ standard library available in wasi-sdk.

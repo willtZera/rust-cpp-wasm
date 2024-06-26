@@ -7,7 +7,7 @@ extern "C"
   {
     std::string str = "World";
     const char *cstr = str.c_str();
-    std::cout << "Hello, " << str << " from C++!" << std::endl;
-    printf("Hello from C++, %s \n", cstr);
+    std::cout << "[hello] Hello, " << str << " from C++! (std::cout)" << std::endl;
+    printf("[hello] Hello %s from C++! (printf)\n", cstr);
   }
 }
