@@ -12,6 +12,6 @@ cargo build --target=wasm32-wasi --release
 ## Run 
 
 ```
-wasmedge --reactor  my_rust_app.wasm hello
-wasmedge my_rust_app.wasm
+wasmedge --reactor  target/wasm32-wasi/release/my_rust_app.wasm hello
+wasmedge target/wasm32-wasi/release/my_rust_app.wasm
 ```
