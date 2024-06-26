@@ -23,3 +23,11 @@ cargo build --target=wasm32-wasi --release
 ```
 wasmedge --reactor target/wasm32-wasi/release/my_rust_app.wasm test
 ```
+
+This should print the following:
+
+```
+[test] Hello from Rust
+[hello] Hello, World from C++! (std::cout)
+[hello] Hello World from C++! (printf)
+```
