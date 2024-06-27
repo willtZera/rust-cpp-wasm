@@ -8,7 +8,7 @@ A rust project with C++ code compatible with wasm
 1. Download and install `wasi-sdk` from the official [GitHub repository](https://github.com/WebAssembly/wasi-sdk/releases). Choose the appropriate version for your system.
 2. After downloading, extract the `wasi-sdk` package and set up the environment variables:
 ```
-export WASI_SDK_PATH=/path/to/wasi-sdk
+export WASI_SDK_PATH=~/Downloads/wasi-sdk-22.0
 export PATH=$WASI_SDK_PATH/bin:$PATH
 ```
 3. You may also need to install `rustup`

@@ -15,7 +15,7 @@ PREFIX=$(cd wasm-build && pwd)
 ./configure --prefix="${PREFIX}" \
   --with-sysroot="$WASI_SYSROOT" \
   --host=wasm32-wasi \
-  --disable-ssp --disable-shared
+  --disable-ssp --enable-static --disable-shared 
 
 make
 make install
