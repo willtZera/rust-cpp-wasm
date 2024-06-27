@@ -11,6 +11,7 @@ A rust project with C++ code compatible with wasm
 export WASI_SDK_PATH=/path/to/wasi-sdk
 export PATH=$WASI_SDK_PATH/bin:$PATH
 ```
+3. You may also need to install `rustup`
 
 ## Build
 
@@ -21,5 +22,13 @@ cargo build --target=wasm32-wasi --release
 ## Run 
 
 ```
-wasmedge --reactor  target/wasm32-wasi/release/my_rust_app.wasm test
+wasmedge --reactor target/wasm32-wasi/release/my_rust_app.wasm test
+```
+
+This should print the following:
+
+```
+[test] Hello from Rust
+[hello] Hello, World from C++! (std::cout)
+[hello] Hello World from C++! (printf)
 ```
