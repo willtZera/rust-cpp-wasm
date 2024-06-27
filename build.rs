@@ -24,6 +24,7 @@ fn main() {
         // -I (specifies the directories where headers are located)
         build.include(include_path);
         build.include("libsodium/wasm-build/include");
+        //  build.include("/usr/local/include");
         
         build.flag("--sysroot");
         build.flag(sysroot.to_str().unwrap());
@@ -32,7 +33,7 @@ fn main() {
         // -L (specifies the directories where the libraries are located)
         println!("cargo:rustc-link-search=native={}", lib_path.display());
         println!("cargo:rustc-link-search=native={}", "libsodium/wasm-build/lib");
-
+        // println!("cargo:rustc-link-search=native={}", "/usr/local/lib");
 
         // -l (link the libraries)
         println!("cargo:rustc-link-lib=static=c++");
@@ -44,3 +45,5 @@ fn main() {
 
     println!("cargo:rerun-if-changed=cpp/my_code.cpp");
 }
+
+// ~/Downloads/wabt-1.0.35/bin/wasm-objdump -x target/wasm32-wasi/release/my_rust_app.wasm | grep sodium_init
