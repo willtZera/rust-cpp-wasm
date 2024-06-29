@@ -1,6 +1,6 @@
 # Overview
 
-A rust project with C++ code compatible with wasm
+A rust project with C++ code compatible with wasm. Uses libsodium.
 
 ## Prerequisites 
 
@@ -12,7 +12,7 @@ export WASI_SDK_PATH=~/Downloads/wasi-sdk-22.0
 export PATH=$WASI_SDK_PATH/bin:$PATH
 ```
 3. You may also need to install `rustup`
-4. Run `sh prepare-sodium.sh` to prepare `libsodium`. You may need to install `zig` in advance.
+4. Run `sh prepare-sodium.sh` to prepare `libsodium` for wasm env. You may need to install `zig` in advance.
 
 ## Build
 
