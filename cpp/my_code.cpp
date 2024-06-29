@@ -15,12 +15,14 @@ extern "C"
     if (sodium_init() < 0)
     {
       /* panic! the library couldn't be initialized; it is not safe to use */
-      printf("the sodium couldn't be initialized!\n");
+      printf("ERROR: the sodium couldn't be initialized!\n");
       return;
     }
     else
     {
-      printf("the sodium is initialized!\n");
+      printf("The sodium is initialized!\n");
     }
+    uint32_t rand_val = randombytes_random();
+    printf("sodium randombytes: %d\n", rand_val);
   }
 }

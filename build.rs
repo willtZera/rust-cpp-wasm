@@ -23,8 +23,7 @@ fn main() {
 
         // -I (specifies the directories where headers are located)
         build.include(include_path);
-        build.include("libsodium/wasm-build/include");
-        //  build.include("/usr/local/include");
+        build.include("libsodium/zig-out/include");
         
         build.flag("--sysroot");
         build.flag(sysroot.to_str().unwrap());
@@ -32,8 +31,7 @@ fn main() {
 
         // -L (specifies the directories where the libraries are located)
         println!("cargo:rustc-link-search=native={}", lib_path.display());
-        println!("cargo:rustc-link-search=native={}", "libsodium/wasm-build/lib");
-        // println!("cargo:rustc-link-search=native={}", "/usr/local/lib");
+        println!("cargo:rustc-link-search=native={}", "libsodium/zig-out/lib");
 
         // -l (link the libraries)
         println!("cargo:rustc-link-lib=static=c++");
