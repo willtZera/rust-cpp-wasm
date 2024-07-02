@@ -18,16 +18,31 @@ RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
 ENV PATH="/root/.cargo/bin:${PATH}"
 RUN rustup target add wasm32-wasi
 
+# Download and install Zig
+RUN wget https://ziglang.org/download/0.13.0/zig-linux-x86_64-0.13.0.tar.xz && \
+    tar -xvJf zig-linux-x86_64-0.13.0.tar.xz && \
+    mv zig-linux-x86_64-0.13.0 /opt/zig && \
+    ln -s /opt/zig/zig /usr/local/bin/zig
+
 # Download and extract WASI SDK
 RUN wget https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-22/wasi-sdk-22.0-linux.tar.gz && \
     tar -xvzf wasi-sdk-22.0-linux.tar.gz && \
     mv wasi-sdk-22.0 /opt/wasi-sdk
+
 
 # Set environment variables for WASI SDK
 ENV WASI_SDK_PATH=/opt/wasi-sdk
 ENV PATH="${WASI_SDK_PATH}/bin:${PATH}"
 ENV CFLAGS="-I${WASI_SDK_PATH}/share/wasi-sysroot/include"
 ENV LDFLAGS="-L${WASI_SDK_PATH}/share/wasi-sysroot/lib"
+
+RUN apt-get install -y libtool
+# Copy the prepare-sodium script and make it executable
+COPY prepare-sodium.sh /usr/local/bin/prepare-sodium.sh
+RUN chmod +x /usr/local/bin/prepare-sodium.sh
+
+# Run the prepare-sodium script
+RUN sh /usr/local/bin/prepare-sodium.sh
 
 # Copy the project files
 COPY . /my_rust_project

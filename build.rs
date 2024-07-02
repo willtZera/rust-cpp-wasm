@@ -17,8 +17,8 @@ fn main() {
         let lib_path = sysroot.join("lib/wasm32-wasi");
 
         // Path to the installed libsodium-wasi
-        //let sodium_include_path = PathBuf::from("/opt/libsodium-wasi/include");
-        //let sodium_lib_path = PathBuf::from("/opt/libsodium-wasi/lib");
+        let sodium_include_path = PathBuf::from("/libsodium/zig-out/include");
+        let sodium_lib_path = PathBuf::from("/libsodium/zig-out/lib ");
 
         println!("cargo:rustc-link-search=native={}", lib_path.display());
         println!("cargo:rustc-link-lib=static=c++");
@@ -35,7 +35,7 @@ fn main() {
             .file("cpp/crypto/hashing.cpp")
             .file("cpp/utils/base58.cpp")
             .include(include_path)
-            //.include(sodium_include_path)
+            .include(sodium_include_path)
             .flag("--sysroot")
             .flag(sysroot.to_str().unwrap())
             .flag("-fno-exceptions") // By adding the -fno-exceptions flag to the cc::Build configuration, you ensure that the C++ code is compiled without exception support, preventing the linker errors related to __cxa_allocate_exception. More info https://github.com/WebAssembly/wasi-sdk?tab=readme-ov-file#notable-limitations

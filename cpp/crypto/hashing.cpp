@@ -8,15 +8,12 @@ std::vector<uint8_t> blake3_hash(const std::vector<uint8_t> &input)
     // blake3_hasher_update(&hasher, input.data(), input.size());
     // blake3_hasher_finalize(&hasher, hash.data(), hash.size());
     // return hash;
-    std::vector<uint8_t> hash;
-    return hash;
+
 }
 std::vector<uint8_t> sha256_hash(const std::vector<uint8_t> &input)
 {
-    // std::vector<uint8_t> hash(crypto_hash_sha256_BYTES);
-    // crypto_hash_sha256(hash.data(), input.data(), input.size());
-    // return hash;
-    std::vector<uint8_t> hash;
+    std::vector<uint8_t> hash(crypto_hash_sha256_BYTES);
+    crypto_hash_sha256(hash.data(), input.data(), input.size());
     return hash;
 }
 
@@ -43,12 +40,11 @@ std::string blake3_hash_c(const std::string &input_str)
 
 std::string sha256_hash_c(const std::string &input_str)
 {
-    // std::vector<uint8_t> input(input_str.begin(), input_str.end());
-    // std::vector<uint8_t> hash(crypto_hash_sha256_BYTES);
-    // crypto_hash_sha256(hash.data(), input.data(), input.size());
-    // std::string hash_str(hash.begin(), hash.end());
-    // return hash_str;
-    return "";
+    std::vector<uint8_t> input(input_str.begin(), input_str.end());
+    std::vector<uint8_t> hash(crypto_hash_sha256_BYTES);
+    crypto_hash_sha256(hash.data(), input.data(), input.size());
+    std::string hash_str(hash.begin(), hash.end());
+    return hash_str;
 }
 
 std::string sha512_hash_c(const std::string &input_str)

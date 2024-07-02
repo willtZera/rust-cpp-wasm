@@ -1,7 +1,7 @@
 #pragma once
 
 #include <cstdint>
-//#include <sodium.h>
+#include <sodium.h>
 #include <string>
 #include <vector>
 #include <iostream>
