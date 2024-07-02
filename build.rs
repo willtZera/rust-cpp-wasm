@@ -14,6 +14,12 @@ fn main() {
     let mut build = cc::Build::new();
     // build.cpp(true) // this will cause rust-lld: error: unable to find library -lstdc++
     build.file("cpp/my_code.cpp");
+    build.file("cpp/blake3/blake3.c");
+    build.file("cpp/blake3/blake3_dispatch.c");
+    build.file("cpp/blake3/blake3_portable.c");
+    build.file("cpp/blake3/blake3.c");
+    build.file("cpp/crypto/hashing.cpp");
+    build.file("cpp/utils/base58.cpp");
 
     if target.contains("wasm32") {
         let wasi_sdk_path = env::var("WASI_SDK_PATH").expect("WASI_SDK_PATH not set");
@@ -23,7 +29,7 @@ fn main() {
 
         // -I (specifies the directories where headers are located)
         build.include(include_path);
-        build.include("libsodium/zig-out/include");
+        build.include("/usr/local/src/libsodium/zig-out/include");
         
         build.flag("--sysroot");
         build.flag(sysroot.to_str().unwrap());
@@ -31,7 +37,7 @@ fn main() {
 
         // -L (specifies the directories where the libraries are located)
         println!("cargo:rustc-link-search=native={}", lib_path.display());
-        println!("cargo:rustc-link-search=native={}", "libsodium/zig-out/lib");
+        println!("cargo:rustc-link-search=native={}", "/usr/local/src/libsodium/zig-out/lib");
 
         // -l (link the libraries)
         println!("cargo:rustc-link-lib=static=c++");
