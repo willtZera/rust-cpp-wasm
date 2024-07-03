@@ -2,6 +2,7 @@
 #include <string>
 #include "crypto/hashing.h"
 #include "utils/base58.h"
+//#include "proto/txn.pb.h"
 
 extern "C"
 { 
@@ -13,6 +14,7 @@ extern "C"
       printf("ERROR: the sodium couldn't be initialized!\n");
       return;
     }
+    //zera_txn::BaseTXN txn;
     std::string str = "World";
     std::string test = blake3_hash_c(str);
     std::string test1 = sha256_hash_c(str);

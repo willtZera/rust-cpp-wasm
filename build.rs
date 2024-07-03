@@ -20,6 +20,7 @@ fn main() {
     build.file("cpp/blake3/blake3.c");
     build.file("cpp/crypto/hashing.cpp");
     build.file("cpp/utils/base58.cpp");
+    //build.file("cpp/proto/txn.pb.cc");
 
     if target.contains("wasm32") {
         let wasi_sdk_path = env::var("WASI_SDK_PATH").expect("WASI_SDK_PATH not set");

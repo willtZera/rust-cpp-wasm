@@ -42,9 +42,6 @@ WORKDIR /usr/local/src/libsodium
 RUN ./autogen.sh
 RUN zig build -Dtarget=wasm32-wasi
 
-# Ensure the output directories exist
-RUN ls -R /usr/local/src/libsodium/zig-out
-
 # Copy the project files
 COPY . /my_rust_project
 
